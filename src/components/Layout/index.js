@@ -1,21 +1,24 @@
 import React from 'react';
+import { Link, BrowserRouter, useHistory } from 'react-router-dom';
 
 import Header from '../Header';
-import PostsList from '../PostsList';
 import Footer from '../Footer';
 
-export default function Layout( { onToogleTheme, selectedTheme }) {
+import Routes from '../../Routes';
+
+import { Nav } from './styles';
+
+export default function Layout() {
   return (
-    <>
-      <Header 
-        onToogleTheme={onToogleTheme}
-        selectedTheme={selectedTheme}
-      />
-      <PostsList />
-      <Footer 
-        onToogleTheme={onToogleTheme}
-        selectedTheme={selectedTheme} 
-      />
-    </>
+    <BrowserRouter>
+      <Header />
+      <Nav>
+        <Link to="/">Home</Link>
+        <Link to="/posts">Posts</Link>
+        <Link to="/posts/1231313212312">Post</Link>
+      </Nav>
+      <Routes />
+      <Footer />
+    </BrowserRouter>
   );
 }
